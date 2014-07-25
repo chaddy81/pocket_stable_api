@@ -1,0 +1,21 @@
+# PostgreSQL. Versions 8.2 and up are supported.
+#
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  pool: 5
+
+creds: &creds
+  username: pocket_stable 
+  password: horses
+
+development:
+  <<: *default
+  database: pocket_stable_development
+  <<: *creds
+
+test:
+  <<: *default
+  database: pocket_stable_test
+  <<: *creds
