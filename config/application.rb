@@ -67,5 +67,14 @@ module ServerApi
 
     config.generators.stylesheets = false
     config.generators.javascripts = false
+
+    config.middleware.insert_before ActionDispatch::Static, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', headers: :any, methods: [:get, :post, :options]
+      end
+    end
+
+    config.middleware.use ActionDispatch::Flash
   end
 end

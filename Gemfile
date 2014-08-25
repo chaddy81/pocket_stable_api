@@ -7,6 +7,10 @@ gem 'rails', '4.1.0'
 
 gem 'pg'
 gem 'annotate'
+gem 'devise'
+
+gem 'active_model_serializers'
+gem 'rack-cors', :require => 'rack/cors'
 
 group :development do
   gem 'rspec-rails'
