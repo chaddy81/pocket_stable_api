@@ -1,5 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
-  skip_before_filter :authenticate!
+  skip_before_filter :authenticate!, only: :create
   respond_to :json
   def create
     puts "Params are: #{user_params.to_yaml}"

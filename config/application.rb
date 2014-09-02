@@ -1,5 +1,6 @@
 require File.expand_path('../boot', __FILE__)
 
+
 # Pick the frameworks you want:
 require "active_record/railtie"
 require "action_controller/railtie"
@@ -71,10 +72,16 @@ module ServerApi
     config.middleware.insert_before ActionDispatch::Static, Rack::Cors do
       allow do
         origins '*'
-        resource '*', headers: :any, methods: [:get, :post, :options]
+        resource '*', headers: :any, methods: [:get, :post, :options, :put]
       end
     end
 
     config.middleware.use ActionDispatch::Flash
+
+    config = YAML.load(File.read(File.expand_path('../settings.yml', __FILE__)))
+    config.merge! config.fetch(Rails.env, {})
+    config.each do |key, value|
+      ENV[key] = value.to_s unless value.kind_of? Hash
+    end
   end
 end
