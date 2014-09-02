@@ -1,0 +1,4 @@
+development:
+  S3_KEY: 'AKIAIQDYDJUZSSI7WCBQ'
+  S3_SECRET: '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'
+  S3_BUCKET: 'pocket-stable'
