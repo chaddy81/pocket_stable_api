@@ -12,10 +12,11 @@ class API::HorsesController < ApplicationController
   end
 
   def create
-    puts "Got here"
-    @horse = Horse.new(horse_params)
+    api_key = request.headers['X-Auth-Token']
+    user = User.where(authentication_token: api_key).first if api_key
+    @horse = Horse.new(horse_params.merge(user_id: user.id))
     if @horse.save!
-      respond_with @horse
+      render json: @horse, status: 201
     else
       respond_with text: 'Failed'
     end
@@ -37,7 +38,7 @@ class API::HorsesController < ApplicationController
   private
 
   def horse_params
-    params.require(:horse).permit(:name, :nick_name, :sex, :fertility, :foaling_date, :color, :date_of_birth, :markings, :avatar, :breed, :registration_number, :org_numbers, :emergencies, :comments)
+    params.require(:horse).permit(:name, :nick_name, :sex, :fertility, :foaling_date, :color, :date_of_birth, :markings, :avatar, :breed, :registration_number, :org_numbers, :emergencies, :comments, :user_id)
   end
 
 end
