@@ -27,9 +27,10 @@ class API::HorsesController < ApplicationController
   end
 
   def update
-    @horse = Horse.find(params[:id])
-    if @horse.update_attributes(horse_params)
-      render json: @horse, status: :ok
+    puts horse_params
+    horse = Horse.find(params[:id])
+    if horse.update_attributes(horse_params)
+      render json: horse.to_json, status: :ok
     else
       respond_with status: 422
     end
