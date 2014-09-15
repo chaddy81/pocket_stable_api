@@ -8,6 +8,8 @@ ServerApi::Application.routes.draw do
   namespace :api, defaults: {format: :json} do
     resources :horses
     resources :users
+    resources :veterinarians
+    resources :notes
   end
 
 end

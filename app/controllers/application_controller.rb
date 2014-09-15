@@ -8,6 +8,17 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :password_confirmation, :current_password) }
   end
 
+  def split_base64(uri_str)
+    if uri_str.match(%r{^data:(.*?);(.*?),(.*)$})
+      return {
+        type:      $1, # "image/png"
+        encoder:   $2, # "base64"
+        data:      $3, # data string
+        extension: $1.split('/')[1] # "png"
+        }
+    end
+  end
+
   private
 
     def authenticate!

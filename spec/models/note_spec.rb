@@ -1,17 +1,19 @@
 # == Schema Information
 #
-# Table name: veterinarians
+# Table name: notes
 #
 #  id         :integer          not null, primary key
-#  name       :string(255)
-#  phone      :string(255)
+#  title      :string(255)
+#  date       :date
+#  start_time :time
+#  end_time   :time
+#  content    :text
 #  created_at :datetime
 #  updated_at :datetime
-#  user_id    :integer
 #
 
 require 'rails_helper'
 
-RSpec.describe Veterinarian, :type => :model do
+RSpec.describe Note, :type => :model do
   pending "add some examples to (or delete) #{__FILE__}"
 end

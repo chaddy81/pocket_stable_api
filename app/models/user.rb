@@ -33,6 +33,8 @@ class User < ActiveRecord::Base
   before_save :ensure_authentication_token
 
   has_many :horses
+  has_many :notes
+  has_many :veterinarians
 
   def ensure_authentication_token
     if authentication_token.blank?

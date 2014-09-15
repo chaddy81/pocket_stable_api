@@ -14,7 +14,19 @@ class API::HorsesController < ApplicationController
   def create
     api_key = request.headers['X-Auth-Token']
     user = User.where(authentication_token: api_key).first if api_key
-    @horse = Horse.new(horse_params.merge(user_id: user.id))
+
+    new_horse_params = horse_params
+
+    if horse_params[:avatar]
+      avatar = horse_params[:avatar]
+      avatarData = split_base64(avatar)[:data]
+      puts avatarData
+      avatarBinary = Base64.decode64(avatarData)
+      puts avatarBinary
+      new_horse_params[:avatar] = avatarBinary
+    end
+
+    @horse = Horse.new(new_horse_params.merge(user_id: user.id))
     if @horse.save!
       render json: @horse, status: 201
     else
@@ -29,7 +41,10 @@ class API::HorsesController < ApplicationController
   def update
     puts horse_params
     horse = Horse.find(params[:id])
-    if horse.update_attributes(horse_params)
+    new_horse_params = horse_params
+    new_horse_params[:foaling_date] = Date.strptime(new_horse_params[:foaling_date], '%m/%d/%Y')
+    new_horse_params[:date_of_birth] = Date.strptime(new_horse_params[:date_of_birth], '%m/%d/%Y')
+    if horse.update_attributes(new_horse_params)
       render json: horse.to_json, status: :ok
     else
       respond_with status: 422
