@@ -10,6 +10,7 @@ ServerApi::Application.routes.draw do
     resources :users
     resources :veterinarians
     resources :notes
+    resources :documents
   end
 
 end

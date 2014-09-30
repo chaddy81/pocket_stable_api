@@ -35,6 +35,7 @@ class User < ActiveRecord::Base
   has_many :horses
   has_many :notes
   has_many :veterinarians
+  has_many :documents
 
   def ensure_authentication_token
     if authentication_token.blank?

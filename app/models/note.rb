@@ -10,6 +10,7 @@
 #  content    :text
 #  created_at :datetime
 #  updated_at :datetime
+#  user_id    :integer
 #
 
 class Note < ActiveRecord::Base

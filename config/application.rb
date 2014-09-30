@@ -78,10 +78,10 @@ module ServerApi
 
     config.middleware.use ActionDispatch::Flash
 
-    config = YAML.load(File.read(File.expand_path('../settings.yml', __FILE__)))
-    config.merge! config.fetch(Rails.env, {})
-    config.each do |key, value|
-      ENV[key] = value.to_s unless value.kind_of? Hash
-    end
+    # config = YAML.load(File.read(File.expand_path('../settings.yml', __FILE__)))
+    # config.merge! config.fetch(Rails.env, {})
+    # config.each do |key, value|
+    #   ENV[key] = value.to_s unless value.kind_of? Hash
+    # end
   end
 end

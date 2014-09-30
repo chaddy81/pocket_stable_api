@@ -29,4 +29,5 @@ class Horse < ActiveRecord::Base
 
   has_many :photos
   has_many :documents
+
 end

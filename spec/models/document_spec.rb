@@ -5,8 +5,8 @@
 #  id         :integer          not null, primary key
 #  created_at :datetime
 #  updated_at :datetime
-#  filename   :string(255)
-#  horse_id   :integer
+#  file       :string(255)
+#  user_id    :integer
 #
 
 require 'rails_helper'
