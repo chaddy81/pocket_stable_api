@@ -41,6 +41,11 @@ class API::DocumentsController < ApplicationController
     respond_with Document.find(params[:id])
   end
 
+  def destroy
+    Document.find(params[:id]).destroy
+    render nothing: true, status: :ok
+  end
+
   private
 
   def document_params

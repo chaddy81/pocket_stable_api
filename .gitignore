@@ -14,3 +14,6 @@
 /log/*.log
 /tmp
 /config/settings.yml
+
+# Ignore rvmrc
+.rvmrc
