@@ -43,7 +43,7 @@ class API::DocumentsController < ApplicationController
 
   def destroy
     Document.find(params[:id]).destroy
-    render nothing: true, status: :ok
+    head :no_content
   end
 
   private

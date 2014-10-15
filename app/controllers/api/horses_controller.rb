@@ -47,7 +47,7 @@ class API::HorsesController < ApplicationController
 
   def destroy
     Horse.find(params[:id]).destroy
-    render nothing: true
+    head :no_content
   end
 
   def update
