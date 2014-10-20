@@ -29,6 +29,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    addressable (2.3.6)
     annotate (2.6.5)
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
@@ -80,6 +81,10 @@ GEM
     inflecto (0.0.2)
     ipaddress (0.8.0)
     json (1.8.1)
+    launchy (2.4.2)
+      addressable (~> 2.3)
+    letter_opener (1.2.0)
+      launchy (~> 2.2)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -187,6 +192,7 @@ DEPENDENCIES
   devise
   faker
   fog
+  letter_opener
   mini_magick
   pg
   rack-cors

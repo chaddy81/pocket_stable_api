@@ -19,4 +19,5 @@ gem 'carrierwave'
 group :development do
   gem 'rspec-rails'
   gem 'faker'
+  gem 'letter_opener'
 end

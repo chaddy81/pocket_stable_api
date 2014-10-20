@@ -7,7 +7,10 @@ ServerApi::Application.routes.draw do
 
   namespace :api, defaults: {format: :json} do
     resources :horses
-    resources :users
+    resources :users do
+      post 'forgot_password', on: :collection, to: 'users#forgot_password'
+      post 'reset_password', on: :collection, to: 'users#reset_password'
+    end
     resources :veterinarians
     resources :notes
     resources :documents
