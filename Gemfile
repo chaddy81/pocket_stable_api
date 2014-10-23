@@ -16,6 +16,8 @@ gem 'fog'
 gem "mini_magick"
 gem 'carrierwave'
 
+gem 'newrelic_rpm'
+
 group :development do
   gem 'rspec-rails'
   gem 'faker'
