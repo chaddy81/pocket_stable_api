@@ -40,7 +40,7 @@ class API::UsersController < ApplicationController
       render json: 'User not found', status: 422
     else
       user.send_reset_password_instructions
-      head :no_content
+      head :no_content, status: 201
     end
   end
 
