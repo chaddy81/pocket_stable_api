@@ -9,4 +9,5 @@ class HorseSerializer < ActiveModel::Serializer
   def avatar_profile_url
     "https://s3.amazonaws.com/pocket-stable/#{object.avatar.path}"
   end
+
 end

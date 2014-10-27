@@ -7,6 +7,9 @@
 #  updated_at :datetime
 #  file       :string(255)
 #  user_id    :integer
+#  name       :string(255)
+#  tags       :string(255)
+#  filename   :text
 #
 
 class Document < ActiveRecord::Base

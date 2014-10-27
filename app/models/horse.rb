@@ -29,6 +29,7 @@ class Horse < ActiveRecord::Base
 
   has_many :photos
   has_many :documents
+  has_many :weights
 
   validates :name, :nick_name, presence: true
 

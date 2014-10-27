@@ -14,6 +14,7 @@ ServerApi::Application.routes.draw do
     resources :veterinarians
     resources :notes
     resources :documents
+    resources :weights
   end
 
 end
