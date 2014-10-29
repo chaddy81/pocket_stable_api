@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141025213937) do
+ActiveRecord::Schema.define(version: 20141029024133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,19 @@ ActiveRecord::Schema.define(version: 20141025213937) do
   end
 
   add_index "photos", ["horse_id"], name: "index_photos_on_horse_id", using: :btree
+
+  create_table "stable_informations", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "last_farrier"
+    t.string   "farrier_name"
+    t.string   "farrier_phone"
+    t.integer  "farrier_interval"
+    t.string   "hay"
+    t.string   "feed"
+    t.text     "supplements"
+    t.integer  "horse_id"
+  end
 
   create_table "users", force: true do |t|
     t.string   "first_name"

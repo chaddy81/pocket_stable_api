@@ -34,7 +34,9 @@ class API::HorsesController < ApplicationController
     end
 
     @horse = Horse.new(new_horse_params.merge(user_id: user.id))
+
     if @horse.save
+      @horse.stable_informations.create!
       render json: @horse, status: 201
     else
       render json: { errors: @horse.errors.full_messages }, status: 422
