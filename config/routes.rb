@@ -16,9 +16,13 @@ ServerApi::Application.routes.draw do
     resources :documents
     resources :weights
     resources :stable_information
+    resources :health_information
   end
 
   get 'api/stableInformation/:id', to: 'api/stable_information#show', defaults: {format: :json}
   put 'api/stableInformation/:id', to: 'api/stable_information#update', defaults: {format: :json}
+
+  get 'api/healthInformation/:id', to: 'api/health_information#show', defaults: {format: :json}
+  put 'api/healthInformation/:id', to: 'api/health_information#update', defaults: {format: :json}
 
 end

@@ -37,6 +37,7 @@ class API::HorsesController < ApplicationController
 
     if @horse.save
       @horse.stable_informations.create!
+      @horse.health_informations.create!
       render json: @horse, status: 201
     else
       render json: { errors: @horse.errors.full_messages }, status: 422
@@ -44,7 +45,7 @@ class API::HorsesController < ApplicationController
   end
 
   def show
-    respond_with Horse.find(params[:id])
+    respond_with @user.horses.find_by_id(params[:id])
   end
 
   def destroy

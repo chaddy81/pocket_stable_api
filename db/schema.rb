@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141029024133) do
+ActiveRecord::Schema.define(version: 20141030175458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,31 @@ ActiveRecord::Schema.define(version: 20141029024133) do
     t.string   "name"
     t.string   "tags"
     t.text     "filename"
+  end
+
+  create_table "health_informations", force: true do |t|
+    t.date     "last_dentist"
+    t.string   "dentist_name"
+    t.string   "dentist_phone"
+    t.integer  "dentist_interval"
+    t.date     "last_coggins"
+    t.date     "last_deworming"
+    t.date     "last_tetanus"
+    t.date     "last_rabies"
+    t.date     "last_vew"
+    t.date     "last_botulism"
+    t.date     "last_potomac"
+    t.date     "last_strangles"
+    t.date     "last_anthrax"
+    t.date     "last_rhino_flu"
+    t.integer  "rhino_interval"
+    t.date     "last_west_nile"
+    t.integer  "west_nile_interval"
+    t.text     "other_vacc"
+    t.text     "health_comments"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "horse_id"
   end
 
   create_table "horses", force: true do |t|

@@ -13,7 +13,7 @@ class API::StableInformationController < ApplicationController
   end
 
   def show
-    horse = Horse.find(params[:id])
+    horse = @user.horses.find(params[:id])
     if horse.stable_informations.any?
       respond_with horse.stable_informations.first
     else

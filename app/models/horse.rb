@@ -31,6 +31,7 @@ class Horse < ActiveRecord::Base
   has_many :documents
   has_many :weights
   has_many :stable_informations
+  has_many :health_informations
 
   validates :name, :nick_name, presence: true
 
