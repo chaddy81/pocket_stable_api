@@ -27,4 +27,5 @@
 #
 
 class HealthInformation < ActiveRecord::Base
+  belongs_to :horse
 end
