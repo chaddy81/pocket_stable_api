@@ -1,5 +1,5 @@
 class DocumentSerializer < ActiveModel::Serializer
-  attributes :id, :name, :file, :tags, :filename
+  attributes :id, :name, :file, :filename
 
   def filename
     filename = object.file.url.split('/').reverse

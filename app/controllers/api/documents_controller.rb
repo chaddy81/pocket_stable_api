@@ -4,7 +4,12 @@ class API::DocumentsController < ApplicationController
   respond_to :json
 
   def index
-    respond_with @user.documents.all
+    if params[:horse_id]
+      @documents = @user.documents.where('horses ILIKE ?', "%#{params[:horse_id]}%")
+      respond_with @documents
+    else
+      respond_with @user.documents.all
+    end
   end
 
   def new
@@ -30,10 +35,10 @@ class API::DocumentsController < ApplicationController
     end
 
     @document = Document.new(new_document_params.merge(user_id: user.id))
-    if @document.save!
+    if @document.save
       render json: @document, status: 201
     else
-      respond_with text: 'Failed'
+      render json: { errors: @document.errors.full_messages }, status: 422
     end
   end
 
@@ -49,6 +54,6 @@ class API::DocumentsController < ApplicationController
   private
 
   def document_params
-    params.require(:document).permit(:name, :file, :filename, :tags, :user_id)
+    params.require(:document).permit(:name, :file, :filename, :user_id, :horses)
   end
 end

@@ -16,4 +16,6 @@ class Document < ActiveRecord::Base
   mount_uploader :file, DocumentUploader
 
   belongs_to :user
+
+  validates_presence_of :file, :name, :filename
 end

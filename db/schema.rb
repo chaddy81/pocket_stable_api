@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141030175458) do
+ActiveRecord::Schema.define(version: 20141111055436) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20141030175458) do
     t.string   "file"
     t.integer  "user_id"
     t.string   "name"
-    t.string   "tags"
+    t.string   "horses"
     t.text     "filename"
   end
 
@@ -49,6 +49,13 @@ ActiveRecord::Schema.define(version: 20141030175458) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "horse_id"
+  end
+
+  create_table "horse_document", force: true do |t|
+    t.integer  "horse_id"
+    t.integer  "document_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "horses", force: true do |t|

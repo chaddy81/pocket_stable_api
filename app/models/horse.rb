@@ -28,7 +28,7 @@ class Horse < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
 
   has_many :photos
-  has_many :documents
+  has_many :documents, through: :horse_documents
   has_many :weights
   has_many :stable_informations
   has_many :health_informations
