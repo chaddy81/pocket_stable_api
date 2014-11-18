@@ -18,6 +18,7 @@ ServerApi::Application.routes.draw do
     resources :stable_information
     resources :health_information
     resources :search
+    resources :photos
   end
 
   get 'api/stableInformation/:id', to: 'api/stable_information#show', defaults: {format: :json}

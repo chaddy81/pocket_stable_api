@@ -10,5 +10,7 @@
 #
 
 class Photo < ActiveRecord::Base
-  mount_uploader :filename, PhotoUploader
+  mount_uploader :image, PhotoUploader
+
+  validates_presence_of :image
 end
