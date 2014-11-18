@@ -12,5 +12,7 @@
 class Photo < ActiveRecord::Base
   mount_uploader :image, PhotoUploader
 
+  belongs_to :horse
+
   validates_presence_of :image
 end

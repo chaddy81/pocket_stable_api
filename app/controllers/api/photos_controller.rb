@@ -35,6 +35,22 @@ class API::PhotosController < ApplicationController
     end
   end
 
+  def show
+    photo = Photo.find_by_id(params[:id])
+    if @user.horses.find_by_id(photo.horse_id)
+      respond_with photo
+    end
+  end
+
+  def destroy
+    photo = Photo.find_by_id(params[:id])
+    horse = @user.horses.find(photo.horse_id)
+    unless horse.nil?
+      horse.photos.find(params[:id]).destroy
+      head :no_content
+    end
+  end
+
   private
 
   def photo_params
