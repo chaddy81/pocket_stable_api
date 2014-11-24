@@ -14,6 +14,7 @@
 /log/*.log
 /tmp
 /config/settings.yml
+/public/uploads
 
 # Ignore rvmrc
 .rvmrc
