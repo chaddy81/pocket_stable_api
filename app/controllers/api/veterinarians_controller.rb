@@ -27,9 +27,17 @@ class API::VeterinariansController < ApplicationController
   end
 
   def update
+    vet = @user.veterinarians.find_by_id(params[:id])
+    if vet.update_attributes(vet_params)
+      render json: vet.to_json, status: :ok
+    else
+      respond_with status: 422
+    end
   end
 
   def destroy
+    @user.veterinarians.find_by_id(params[:id]).destroy
+    head :no_content
   end
 
   private
