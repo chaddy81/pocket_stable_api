@@ -34,14 +34,14 @@ class API::UsersController < ApplicationController
 
   def forgot_password
     user = User.find_by_email(params[:email])
-    if params[:email].nil?
-      render json: 'Please enter an email', status: 422
-    elsif user.blank?
-      render json: 'User not found', status: 422
-    else
-      user.send_reset_password_instructions
-      head :no_content, status: 201
-    end
+    # if params[:email].nil?
+    #   render json: 'Please enter an email', status: 422
+    # elsif user.blank?
+    #   render json: 'User not found', status: 422
+    # else
+    user.send_reset_password_instructions
+    head :no_content, status: 201
+    # end
   end
 
   def reset_password
