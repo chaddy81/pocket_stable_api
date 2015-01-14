@@ -18,6 +18,8 @@ gem 'carrierwave'
 
 gem 'newrelic_rpm'
 
+gem 'puma'
+
 group :development do
   gem 'rspec-rails'
   gem 'faker'
