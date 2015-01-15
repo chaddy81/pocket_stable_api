@@ -27,11 +27,11 @@ class Horse < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
 
-  has_many :photos
-  has_many :documents, through: :horse_documents
-  has_many :weights
-  has_many :stable_informations
-  has_many :health_informations
+  has_many :photos, dependent: :destroy
+  has_many :documents, through: :horse_documents, dependent: :destroy
+  has_many :weights, dependent: :destroy
+  has_many :stable_informations, dependent: :destroy
+  has_many :health_informations, dependent: :destroy
 
   validates :name, :nick_name, presence: true
 
