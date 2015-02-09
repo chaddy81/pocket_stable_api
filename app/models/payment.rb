@@ -17,7 +17,7 @@
 class Payment < ActiveRecord::Base
   belongs_to :user
 
-  after_save :update_next_charge_date
+  # after_save :update_next_charge_date
 
   private
 
