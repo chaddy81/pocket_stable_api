@@ -17,15 +17,15 @@
 class Payment < ActiveRecord::Base
   belongs_to :user
 
-  # after_save :update_next_charge_date
+  after_save :update_next_charge_date
 
   private
 
-  # def update_next_charge_date
-  #   if self.charge_interval == 'monthly'
-  #     self.update_columns(next_charge_date: Date.today + 1.month)
-  #   elsif self.charge_interval == 'yearly'
-  #     self.update_columns(next_charge_date: Date.today + 1.year)
-  #   end
-  # end
+  def update_next_charge_date
+    if self.charge_interval == 'monthly'
+      self.update_columns(next_charge_date: Date.today + 1.month)
+    elsif self.charge_interval == 'yearly'
+      self.update_columns(next_charge_date: Date.today + 1.year)
+    end
+  end
 end
