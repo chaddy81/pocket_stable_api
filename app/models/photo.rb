@@ -7,6 +7,7 @@
 #  updated_at :datetime
 #  filename   :string(255)
 #  horse_id   :integer
+#  image      :string(255)
 #
 
 class Photo < ActiveRecord::Base

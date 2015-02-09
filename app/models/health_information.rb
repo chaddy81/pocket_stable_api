@@ -24,6 +24,7 @@
 #  health_comments    :text
 #  created_at         :datetime
 #  updated_at         :datetime
+#  horse_id           :integer
 #
 
 class HealthInformation < ActiveRecord::Base

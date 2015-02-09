@@ -1,4 +1,8 @@
 ServerApi::Application.routes.draw do
+  resources :cors
+  match '/', :to => proc {|env| [200, {'Content-Type' => 'text/plain'}, ["Hello world"]] },
+             :via => [:get, :post, :put, :delete, :options, :head, :patch]
+
   devise_for :users, controllers: { sessions: 'sessions', registrations: 'registrations' }
 
   devise_scope :user do
@@ -19,5 +23,6 @@ ServerApi::Application.routes.draw do
     resources :health_information
     resources :search
     resources :photos
+    resources :payments
   end
 end

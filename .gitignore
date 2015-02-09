@@ -15,6 +15,7 @@
 /tmp
 /config/settings.yml
 /public/uploads
+/config/secrets.yml
 
 # Ignore rvmrc
 .rvmrc

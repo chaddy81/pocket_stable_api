@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.0'
+gem 'rails', '~>4.2.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -16,12 +16,17 @@ gem 'fog'
 gem "mini_magick"
 gem 'carrierwave'
 
+# Using Stripe for card charges and customer creation
+gem 'stripe'
+
 gem 'newrelic_rpm'
 
 gem 'puma'
 
-group :development do
+group :development, :test do
+  gem 'dotenv-rails'
   gem 'rspec-rails'
   gem 'faker'
   gem 'letter_opener'
+  gem 'stripe-ruby-mock'
 end

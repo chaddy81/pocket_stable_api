@@ -11,25 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141118050749) do
+ActiveRecord::Schema.define(version: 20150206042249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "documents", force: true do |t|
+  create_table "documents", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "file"
+    t.string   "file",       limit: 255
     t.integer  "user_id"
-    t.string   "name"
-    t.string   "horses"
+    t.string   "name",       limit: 255
+    t.string   "horses",     limit: 255
     t.text     "filename"
   end
 
-  create_table "health_informations", force: true do |t|
+  create_table "health_informations", force: :cascade do |t|
     t.date     "last_dentist"
-    t.string   "dentist_name"
-    t.string   "dentist_phone"
+    t.string   "dentist_name",       limit: 255
+    t.string   "dentist_phone",      limit: 255
     t.integer  "dentist_interval"
     t.date     "last_coggins"
     t.date     "last_deworming"
@@ -51,37 +51,37 @@ ActiveRecord::Schema.define(version: 20141118050749) do
     t.integer  "horse_id"
   end
 
-  create_table "horse_document", force: true do |t|
+  create_table "horse_document", force: :cascade do |t|
     t.integer  "horse_id"
     t.integer  "document_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "horses", force: true do |t|
-    t.string   "name"
-    t.string   "nick_name"
-    t.string   "sex"
-    t.string   "fertility"
+  create_table "horses", force: :cascade do |t|
+    t.string   "name",                limit: 255
+    t.string   "nick_name",           limit: 255
+    t.string   "sex",                 limit: 255
+    t.string   "fertility",           limit: 255
     t.datetime "foaling_date"
-    t.string   "color"
+    t.string   "color",               limit: 255
     t.datetime "date_of_birth"
-    t.string   "markings"
+    t.string   "markings",            limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.string   "avatar"
-    t.string   "breed"
-    t.string   "registration_number"
-    t.string   "org_numbers"
+    t.string   "avatar",              limit: 255
+    t.string   "breed",               limit: 255
+    t.string   "registration_number", limit: 255
+    t.string   "org_numbers",         limit: 255
     t.text     "emergencies"
     t.text     "comments"
   end
 
   add_index "horses", ["user_id"], name: "index_horses_on_user_id", using: :btree
 
-  create_table "notes", force: true do |t|
-    t.string   "title"
+  create_table "notes", force: :cascade do |t|
+    t.string   "title",      limit: 255
     t.date     "date"
     t.time     "start_time"
     t.time     "end_time"
@@ -91,64 +91,80 @@ ActiveRecord::Schema.define(version: 20141118050749) do
     t.integer  "user_id"
   end
 
-  create_table "photos", force: true do |t|
+  create_table "payments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "card_last4"
+    t.datetime "created_at",                                                  null: false
+    t.datetime "updated_at",                                                  null: false
+    t.date     "next_charge_date"
+    t.decimal  "cost",             precision: 8, scale: 2
+    t.string   "charge_interval",                          default: "yearly"
+    t.integer  "total_horses",                             default: 1
+    t.string   "stripe_token"
+    t.decimal  "temp_cost",        precision: 8, scale: 2
+  end
+
+  create_table "photos", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "filename"
+    t.string   "filename",   limit: 255
     t.integer  "horse_id"
-    t.string   "image"
+    t.string   "image",      limit: 255
   end
 
   add_index "photos", ["horse_id"], name: "index_photos_on_horse_id", using: :btree
 
-  create_table "stable_informations", force: true do |t|
+  create_table "stable_informations", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "last_farrier"
-    t.string   "farrier_name"
-    t.string   "farrier_phone"
+    t.string   "farrier_name",     limit: 255
+    t.string   "farrier_phone",    limit: 255
     t.integer  "farrier_interval"
-    t.string   "hay"
-    t.string   "feed"
+    t.string   "hay",              limit: 255
+    t.string   "feed",             limit: 255
     t.text     "supplements"
     t.integer  "horse_id"
   end
 
-  create_table "users", force: true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
+  create_table "users", force: :cascade do |t|
+    t.string   "first_name",             limit: 255
+    t.string   "last_name",              limit: 255
+    t.string   "email",                  limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",                      default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.string   "authentication_token"
-    t.string   "name"
-    t.string   "confirmation_token"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+    t.string   "authentication_token",   limit: 255
+    t.string   "name",                   limit: 255
+    t.string   "confirmation_token",     limit: 255
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.string   "cus_token"
+    t.string   "string"
+    t.string   "cus_id"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "veterinarians", force: true do |t|
-    t.string   "name"
-    t.string   "phone"
+  create_table "veterinarians", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "phone",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
   end
 
-  create_table "weights", force: true do |t|
+  create_table "weights", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "weight"

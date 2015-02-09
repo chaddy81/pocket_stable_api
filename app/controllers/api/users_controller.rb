@@ -1,16 +1,12 @@
 class API::UsersController < ApplicationController
-  skip_before_filter :authenticate!
+  skip_before_filter :authenticate!, only: [:forgot_password, :reset_password]
   respond_to :json
 
   def index
-    api_key = request.headers['X-Auth-Token']
-    @user = User.where(authentication_token: api_key).first if api_key
     respond_with @user
   end
 
   def show
-    api_key = request.headers['X-Auth-Token']
-    @user = User.where(authentication_token: api_key).first if api_key
     respond_with @user
   end
 
