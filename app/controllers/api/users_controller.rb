@@ -39,7 +39,7 @@ class API::UsersController < ApplicationController
       puts user
     end
     user.send_reset_password_instructions
-    head :no_content, status: 201
+    render status: 200
     # end
   end
 
