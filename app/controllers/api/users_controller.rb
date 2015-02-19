@@ -35,6 +35,9 @@ class API::UsersController < ApplicationController
     # elsif user.blank?
     #   render json: 'User not found', status: 422
     # else
+    if user
+      puts user
+    end
     user.send_reset_password_instructions
     head :no_content, status: 201
     # end
