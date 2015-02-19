@@ -5,7 +5,7 @@ require File.expand_path('../application', __FILE__)
 ServerApi::Application.initialize!
 
 ActionMailer::Base.smtp_settings = {
-  :address        => 'smtp.gmail.net',
+  :address        => 'smtp.gmail.com',
   :port           => '587',
   :authentication => :plain,
   :user_name      => ENV['GMAIL_USERNAME'],
