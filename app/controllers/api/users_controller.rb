@@ -39,7 +39,7 @@ class API::UsersController < ApplicationController
       puts user
     end
     user.send_reset_password_instructions
-    render status: 200
+    respond_with status: 200
     # end
   end
 
