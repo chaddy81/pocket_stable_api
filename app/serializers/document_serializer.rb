@@ -5,4 +5,8 @@ class DocumentSerializer < ActiveModel::Serializer
     filename = object.file.url.split('/').reverse
     return filename[0]
   end
+
+  def file
+    object.file.url
+  end
 end

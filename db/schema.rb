@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150206042249) do
+ActiveRecord::Schema.define(version: 20150304034400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -117,7 +117,7 @@ ActiveRecord::Schema.define(version: 20150206042249) do
   create_table "stable_informations", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "last_farrier"
+    t.date     "last_farrier"
     t.string   "farrier_name",     limit: 255
     t.string   "farrier_phone",    limit: 255
     t.integer  "farrier_interval"
