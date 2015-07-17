@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150304034400) do
+ActiveRecord::Schema.define(version: 20150623140851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20150304034400) do
     t.string   "org_numbers",         limit: 255
     t.text     "emergencies"
     t.text     "comments"
+    t.string   "emergencies_phone"
   end
 
   add_index "horses", ["user_id"], name: "index_horses_on_user_id", using: :btree

@@ -14,14 +14,11 @@ class API::HorsesController < ApplicationController
   end
 
   def create
-    puts @user.horses.count
-    puts @user.payment.total_horses
-
     if @user.horses.count < @user.payment.total_horses
       new_horse_params = horse_params
 
-      new_horse_params[:foaling_date] = Date.strptime(new_horse_params[:foaling_date], '%m/%d/%Y') if new_horse_params[:foaling_date]
-      new_horse_params[:date_of_birth] = Date.strptime(new_horse_params[:date_of_birth], '%m/%d/%Y') if new_horse_params[:date_of_birth]
+      new_horse_params[:foaling_date] = Date.parse(new_horse_params[:foaling_date]) if new_horse_params[:foaling_date]
+      new_horse_params[:date_of_birth] = Date.parse(new_horse_params[:date_of_birth]) if new_horse_params[:date_of_birth]
 
       if horse_params[:avatar]
         avatar = horse_params[:avatar]
@@ -61,8 +58,8 @@ class API::HorsesController < ApplicationController
     puts horse_params
     horse = Horse.find(params[:id])
     new_horse_params = horse_params
-    new_horse_params[:foaling_date] = Date.strptime(new_horse_params[:foaling_date], '%m/%d/%Y') if new_horse_params[:foaling_date]
-    new_horse_params[:date_of_birth] = Date.strptime(new_horse_params[:date_of_birth], '%m/%d/%Y') if new_horse_params[:date_of_birth]
+    new_horse_params[:foaling_date] = Date.parse(new_horse_params[:foaling_date]) if new_horse_params[:foaling_date]
+    new_horse_params[:date_of_birth] = Date.parse(new_horse_params[:date_of_birth]) if new_horse_params[:date_of_birth]
 
     if horse_params[:avatar]
       avatar = horse_params[:avatar]
@@ -85,7 +82,7 @@ class API::HorsesController < ApplicationController
   private
 
   def horse_params
-    params.fetch(:horse, {}).permit(:name, :nick_name, :sex, :fertility, :foaling_date, :color, :date_of_birth, :markings, :avatar, :breed, :registration_number, :org_numbers, :emergencies, :comments, :user_id)
+    params.fetch(:horse, {}).permit(:name, :nick_name, :sex, :fertility, :foaling_date, :color, :date_of_birth, :markings, :avatar, :breed, :registration_number, :org_numbers, :emergencies, :emergencies_phone, :comments, :user_id)
   end
 
 end
